@@ -1,0 +1,172 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<style>
+    .news-nav {
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 12px 0;
+        margin-bottom: 25px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .news-nav a {
+        color: #222;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+        margin-right: 18px;
+        font-family: Arial, sans-serif;
+    }
+    .news-nav a:hover {
+        color: #9f224e;
+    }
+    .home-icon {
+        background-color: #f0f0f0;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #555 !important;
+        margin-right: 18px;
+        text-decoration: none;
+    }
+    .main-article-title {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.35;
+        margin-bottom: 15px;
+        color: #222;
+        font-family: "Merriweather", serif; /* Or similar serif */
+    }
+    .main-article-summary {
+        font-size: 16px;
+        color: #444;
+        line-height: 1.6;
+    }
+    .article-time {
+        font-size: 13px;
+        color: #777;
+        margin-top: 10px;
+    }
+    .sub-article-title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.4;
+        margin-bottom: 12px;
+        color: #222;
+        font-family: "Merriweather", serif;
+    }
+    .opinion-section {
+        background-color: #fcfaf6;
+        padding: 20px;
+        height: 100%;
+        border-top: none;
+    }
+    .opinion-header {
+        color: #9f224e;
+        font-weight: 700;
+        margin-bottom: 15px;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    .opinion-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-family: "Merriweather", serif;
+        color: #222;
+    }
+    .opinion-text {
+        font-size: 15px;
+        color: #555;
+        line-height: 1.5;
+    }
+    .opinion-author {
+        font-weight: 400;
+        font-style: italic;
+        color: #555;
+        font-size: 15px;
+        font-family: "Merriweather", serif;
+    }
+    .comment-icon {
+        color: #999;
+        font-size: 12px;
+        margin-left: 10px;
+        text-decoration: none;
+    }
+    .comment-icon:hover {
+        color: #0066cc;
+    }
+    .custom-container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Georgia", serif;
+    }
+</style>
+
+<div class="custom-container">
+    <div class="news-nav d-flex align-items-center">
+        <a href="#" class="home-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+              <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
+            </svg>
+        </a>
+        <a href="#">VnE-GO</a>
+        <a href="#">Thời sự</a>
+        <a href="#">Thế giới</a>
+        <a href="#">Kinh doanh</a>
+        <a href="#">Khoa học công nghệ</a>
+        <a href="#">Góc nhìn</a>
+        <a href="#">Spotlight</a>
+        <a href="#">Bất động sản</a>
+        <a href="#">Sức khỏe</a>
+        <a href="#">Giải trí</a>
+        <a href="#">Thể thao</a>
+    </div>
+
+    <div class="row mb-4 pb-4 border-bottom">
+        <div class="col-md-8">
+            <img src="~/assets/song-hong-11010225-1779176244246-17791762446461554237733.jpg" class="img-fluid" alt="Cảnh quan sông Hồng" style="width: 100%; object-fit: cover; aspect-ratio: 16/9;" />
+        </div>
+        <div class="col-md-4">
+            <h1 class="main-article-title">'Ưu tiên tái định cư trước khi triển khai Trục cảnh quan sông Hồng'</h1>
+            <p class="main-article-summary">Hà Nội sẽ ưu tiên xây dựng các khu tái định cư trước khi triển khai Trục Đại lộ cảnh quan sông Hồng - dự án hơn 11.400 ha, liên quan khoảng 247.000 dân ven sông, thực hiện giai đoạn 2026-2038.</p>
+            <p class="article-time">1h trước</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 pe-4 border-end">
+            <h3 class="sub-article-title">Hà Nội giải phóng mặt bằng cho hơn 1.400 dự án</h3>
+            <img src="~/assets/Screenshot 2026-05-19 130311.png" class="img-fluid mt-3" alt="Giải phóng mặt bằng" style="width: 100%; object-fit: cover; aspect-ratio: 3/2;"/>
+        </div>
+        <div class="col-md-4 pe-4 ps-4 border-end">
+            <h3 class="sub-article-title">TP HCM siết kiểm soát người nhập cảnh phòng Ebola</h3>
+            <img src="~/assets/San-bay-quoc-te-hon-23_000-ty-o-Ninh-Binh-xuat-hien-buoc-ngoat-moi.jpeg" class="img-fluid mt-3" alt="Sân bay" style="width: 100%; object-fit: cover; aspect-ratio: 3/2;"/>
+        </div>
+        <div class="col-md-4 ps-4">
+            <div class="opinion-section">
+                <div class="opinion-header">Góc nhìn</div>
+                <h3 class="opinion-title">'Bóc lột' trên YouTube</h3>
+                <p class="opinion-text">Khi cỗ máy Content ID của YouTube bị trục lợi, nhiều nghệ s...</p>
+                <div class="d-flex align-items-center mt-3">
+                    <span class="opinion-author">Hoàng Hà</span>
+                    <a href="#" class="comment-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chat-fill me-1" viewBox="0 0 16 16" style="color: #ccc;">
+                          <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-1.359 4.18-1.749A8.45 8.45 0 0 0 8 15"/>
+                        </svg>
+                        24
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
