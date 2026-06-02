@@ -13,11 +13,11 @@ namespace ProductController.Controllers
         }
 
         // Action 2: Category
-        // Nhận tham số 'name' qua Query String (ví dụ: /Product/Category?name=Laptop)
-        // Hiển thị: Category = Laptop
-        public IActionResult Category(string name)
+        // Nhận tham số 'name' cùng 2 tham số khác qua Query String (ví dụ: /Product/Category?name=Laptop&brand=Asus&price=15000000)
+        // Hiển thị: Category = Laptop, Brand = Asus, Price = 15000000
+        public IActionResult Category(string name, string brand, decimal? price)
         {
-            return Content($"Category = {name}");
+            return Content($"Category = {name}, Brand = {brand}, Price = {price}");
         }
     }
 }
