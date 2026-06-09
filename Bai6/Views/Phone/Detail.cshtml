@@ -1,0 +1,17 @@
+﻿@model Bai6.Models.Phone
+@{
+    ViewData["Title"] = "Chi tiết điện thoại";
+}
+
+<h2>Chi tiết thiết bị</h2>
+
+<ul class="list-group w-50 mb-3">
+    <li class="list-group-item"><strong>ID:</strong> @Model.Id</li>
+    <li class="list-group-item"><strong>Tên điện thoại:</strong> @Model.Name</li>
+    <li class="list-group-item"><strong>Hãng:</strong> @Model.Brand</li>
+    <li class="list-group-item"><strong>Giá:</strong> @Model.Price.ToString("N0") VNĐ</li>
+    <li class="list-group-item"><strong>Số lượng trong kho:</strong> @Model.Quantity</li>
+</ul>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Sửa</a>
+<a asp-action="Index" class="btn btn-secondary">Quay lại</a>
