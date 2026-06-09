@@ -1,0 +1,24 @@
+﻿@model bai4_5.Models.Book
+
+<h2>THÊM SÁCH</h2>
+
+<form asp-action="Create" method="post">
+    <div style="margin-bottom: 10px;">
+        <label>Tên sách</label><br />
+        <input asp-for="Name" style="width: 200px;" />
+        <br />
+        <span asp-validation-for="Name" style="color: red;"></span>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label>Giá</label><br />
+        <input asp-for="Price" type="number" style="width: 200px;" />
+        <br />
+        <span asp-validation-for="Price" style="color: red;"></span>
+    </div>
+
+    <div style="margin-top: 15px;">
+        <button type="submit">Thêm</button>
+        <a asp-action="Index">Danh sách sách</a>
+    </div>
+</form>
