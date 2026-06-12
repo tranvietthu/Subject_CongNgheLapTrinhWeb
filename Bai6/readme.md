@@ -1,4 +1,4 @@
-Link video: https://www.loom.com/share/716347d94b0e4ca6a4990cd8deb32e30
+Link video: https://www.loom.com/share/cf58155f1926422599b0629a1d291308
 
 1\. Kiến trúc tổng quan (Mô hình MVC)
 
