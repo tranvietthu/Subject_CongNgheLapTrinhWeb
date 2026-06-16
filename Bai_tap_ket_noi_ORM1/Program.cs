@@ -54,6 +54,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+app.MapControllers(); // Thêm dòng này để hỗ trợ attribute routing cho API
+
 try
 {
     app.Run();

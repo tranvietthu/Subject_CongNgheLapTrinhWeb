@@ -10,6 +10,7 @@ namespace Lesson3_CNLTWeb.Data
         }
 
         public DbSet<Book> Books => Set<Book>(); // id là duy nhất
+        public DbSet<Product> Products => Set<Product>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,6 +21,14 @@ namespace Lesson3_CNLTWeb.Data
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
                 entity.Property(e => e.Price).HasColumnType("decimal(18,2)");
                 entity.Property(e => e.ImageUrl).HasMaxLength(500);
+            });
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.ToTable("Product", "dbo");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
+                entity.Property(e => e.Price).HasColumnType("decimal(18,2)");
             });
         }
     }
