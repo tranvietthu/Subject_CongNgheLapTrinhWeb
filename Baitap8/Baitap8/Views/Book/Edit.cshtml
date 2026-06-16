@@ -1,0 +1,47 @@
+@model Book
+@{
+    ViewData["Title"] = "Sửa sách";
+}
+
+<h1>Sửa sách</h1>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="ImageUrl" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ImageFiles" class="form-label"></label>
+        <input asp-for="ImageFiles" type="file" multiple class="form-control" accept=".jpg,.png" />
+        <span asp-validation-for="ImageFiles" class="text-danger"></span>
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div class="mt-2">
+                <p>Ảnh hiện tại:</p>
+                @foreach (var url in Model.ImageUrl.Split(';', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    <img src="@url" alt="Image" style="max-width: 100px; max-height: 100px; margin-right: 5px;" />
+                }
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

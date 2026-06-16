@@ -41,37 +41,15 @@ namespace Lesson3_CNLTWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Book book, IFormFile? imageFile)
+        public IActionResult Create(Book book)
         {
-            if (imageFile != null)
-            {
-                var extension = Path.GetExtension(imageFile.FileName).ToLower();
-                if (extension != ".jpg" && extension != ".png" && extension != ".jpeg")
-                {
-                    ModelState.AddModelError("ImageUrl", "Chỉ cho phép upload file .jpg hoặc .png");
-                }
-            }
 
             if (!ModelState.IsValid)
             {
                 return View(book);
             }
 
-            if (imageFile != null)
-            {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    imageFile.CopyTo(fileStream);
-                }
-                book.ImageUrl = "/images/" + uniqueFileName;
-            }
+
 
             _bookRepository.Add(book);
 
@@ -92,47 +70,19 @@ namespace Lesson3_CNLTWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Book book, IFormFile? imageFile, string? existingImageUrl)
+        public IActionResult Edit(int id, Book book)
         {
             if (id != book.Id)
             {
                 return BadRequest();
             }
 
-            if (imageFile != null)
-            {
-                var extension = Path.GetExtension(imageFile.FileName).ToLower();
-                if (extension != ".jpg" && extension != ".png" && extension != ".jpeg")
-                {
-                    ModelState.AddModelError("ImageUrl", "Chỉ cho phép upload file .jpg hoặc .png");
-                }
-            }
-
             if (!ModelState.IsValid)
             {
-                book.ImageUrl = existingImageUrl;
                 return View(book);
             }
 
-            if (imageFile != null)
-            {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    imageFile.CopyTo(fileStream);
-                }
-                book.ImageUrl = "/images/" + uniqueFileName;
-            }
-            else
-            {
-                book.ImageUrl = existingImageUrl;
-            }
+
 
             if (!_bookRepository.Update(book))
             {

@@ -43,10 +43,6 @@ namespace Lesson3_CNLTWeb.Data
 
             existing.Name = book.Name;
             existing.Price = book.Price;
-            if (book.ImageUrl != null)
-            {
-                existing.ImageUrl = book.ImageUrl;
-            }
             _context.SaveChanges(); // lưu thay đổi vào database
             return true;
         }

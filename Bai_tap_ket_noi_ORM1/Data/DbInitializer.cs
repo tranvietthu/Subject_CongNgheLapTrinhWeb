@@ -7,8 +7,7 @@ namespace Lesson3_CNLTWeb.Data
     {
         public static void Initialize(AppDbContext context)
         {
-            // Xóa database cũ (nếu có) để tạo lại DB mới chứa cột ImageUrl
-            context.Database.EnsureDeleted();
+            // Chỉ tạo database nếu chưa tồn tại, không xóa DB cũ để giữ lại dữ liệu
             context.Database.EnsureCreated();
         }
     }

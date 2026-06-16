@@ -14,7 +14,5 @@ namespace Lesson3_CNLTWeb.Models
         [Display(Name = "Giá")]
         public decimal Price { get; set; }
 
-        [Display(Name = "Hình ảnh")]
-        public string? ImageUrl { get; set; }
     }
 }
