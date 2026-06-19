@@ -32,9 +32,11 @@
 <h3>Quản lý ảnh</h3>
 <div class="row mb-3">
     <div class="col-md-12">
-        <form asp-action="AddImage" method="post" class="form-inline d-flex">
+        <form asp-action="AddImage" method="post" enctype="multipart/form-data" class="d-flex align-items-center">
             <input type="hidden" name="roomId" value="@Model.Id" />
-            <input type="text" name="imageUrl" class="form-control mr-2" style="flex: 1; margin-right: 10px;" placeholder="Nhập đường dẫn URL của ảnh..." required />
+            <input type="file" name="imageFile" class="form-control me-2" style="max-width: 300px;" accept="image/*" />
+            <span class="me-2">hoặc URL:</span>
+            <input type="text" name="imageUrl" class="form-control me-2" style="flex: 1;" placeholder="Nhập URL ảnh..." />
             <button type="submit" class="btn btn-success">Thêm Ảnh</button>
         </form>
     </div>

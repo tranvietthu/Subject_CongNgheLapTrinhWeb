@@ -186,11 +186,33 @@ namespace DE1_QUANLYPHONGTRO.Controllers
         // POST: Room/AddImage
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddImage(int roomId, string imageUrl)
+        public async Task<IActionResult> AddImage(int roomId, string? imageUrl, Microsoft.AspNetCore.Http.IFormFile? imageFile)
         {
-            if (string.IsNullOrEmpty(imageUrl))
+            string finalImageUrl = "";
+
+            if (imageFile != null && imageFile.Length > 0)
             {
-                TempData["ErrorMessage"] = "Vui lòng nhập đường dẫn ảnh.";
+                var fileName = System.IO.Path.GetFileNameWithoutExtension(imageFile.FileName) + "_" + System.Guid.NewGuid().ToString() + System.IO.Path.GetExtension(imageFile.FileName);
+                var uploadPath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "images");
+                if (!System.IO.Directory.Exists(uploadPath))
+                {
+                    System.IO.Directory.CreateDirectory(uploadPath);
+                }
+                var filePath = System.IO.Path.Combine(uploadPath, fileName);
+                using (var stream = new System.IO.FileStream(filePath, System.IO.FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                finalImageUrl = "/images/" + fileName;
+            }
+            else if (!string.IsNullOrEmpty(imageUrl))
+            {
+                finalImageUrl = imageUrl;
+            }
+
+            if (string.IsNullOrEmpty(finalImageUrl))
+            {
+                TempData["ErrorMessage"] = "Vui lòng nhập đường dẫn ảnh hoặc chọn file ảnh từ máy tính.";
                 return RedirectToAction("Details", new { id = roomId });
             }
 
@@ -199,7 +221,7 @@ namespace DE1_QUANLYPHONGTRO.Controllers
             var newImage = new RoomImage_BCS240041
             {
                 RoomId = roomId,
-                ImageUrl = imageUrl,
+                ImageUrl = finalImageUrl,
                 IsThumbnail = !hasImages // First image becomes thumbnail automatically
             };
 
