@@ -1,0 +1,31 @@
+@model DE1_QUANLYPHONGTRO.Models.RoomType_BCS240041
+
+@{
+    ViewData["Title"] = "Xóa Loại Phòng";
+}
+
+<h1>Xóa Loại Phòng</h1>
+
+<h3>Bạn có chắc chắn muốn xóa loại phòng này không?</h3>
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <dl class="row">
+        <dt class="col-sm-2">Mô tả</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+    </form>
+</div>

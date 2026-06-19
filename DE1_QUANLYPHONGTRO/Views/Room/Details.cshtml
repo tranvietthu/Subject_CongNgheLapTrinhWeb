@@ -1,0 +1,75 @@
+@model DE1_QUANLYPHONGTRO.Models.Room_BCS240041
+
+@{
+    ViewData["Title"] = "Chi Tiết Phòng";
+}
+
+<h1>Chi Tiết Phòng: @Model.Name</h1>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <p><strong>Loại phòng:</strong> @Model.RoomType?.Name</p>
+                <p><strong>Giá:</strong> @Model.Price.ToString("N0") VND</p>
+                <p><strong>Diện tích:</strong> @Model.Area m²</p>
+                <p><strong>Trạng thái:</strong> @(Model.IsAvailable ? "Còn phòng" : "Đã thuê")</p>
+                <p><strong>Mô tả:</strong> @Model.Description</p>
+            </div>
+        </div>
+        <div class="mt-3">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Sửa</a>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+        </div>
+    </div>
+</div>
+
+<h3>Quản lý ảnh</h3>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <form asp-action="AddImage" method="post" class="form-inline d-flex">
+            <input type="hidden" name="roomId" value="@Model.Id" />
+            <input type="text" name="imageUrl" class="form-control mr-2" style="flex: 1; margin-right: 10px;" placeholder="Nhập đường dẫn URL của ảnh..." required />
+            <button type="submit" class="btn btn-success">Thêm Ảnh</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    @if (Model.RoomImages != null && Model.RoomImages.Any())
+    {
+        @foreach (var img in Model.RoomImages)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="@img.ImageUrl" class="card-img-top" alt="Ảnh phòng" style="height: 200px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/200?text=Lỗi+Ảnh';">
+                    <div class="card-body text-center">
+                        @if (img.IsThumbnail)
+                        {
+                            <span class="badge bg-primary mb-2">Ảnh đại diện</span>
+                        }
+                        else
+                        {
+                            <form asp-action="SetThumbnail" method="post">
+                                <input type="hidden" name="imageId" value="@img.Id" />
+                                <input type="hidden" name="roomId" value="@Model.Id" />
+                                <button type="submit" class="btn btn-sm btn-outline-primary">Chọn làm ảnh đại diện</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-md-12">
+            <div class="alert alert-info">Phòng chưa có ảnh.</div>
+        </div>
+    }
+</div>
