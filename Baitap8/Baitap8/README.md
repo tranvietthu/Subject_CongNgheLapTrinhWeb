@@ -2,8 +2,6 @@
 
 https://docs.google.com/videos/d/17C7ANUHQjEmnZE7oMD0RhILpl4ZZU6gGiAYVgPYeaes/edit?usp=sharing
 
-
-
 ## Hướng dẫn kết nối API (Front-end / Postman)
 
 Ứng dụng chạy API tại đường dẫn: `https://localhost:<port>` hoặc `http://localhost:<port>` (Thay `<port>` bằng port khi bạn chạy ứng dụng, ví dụ `5001` hoặc `5000`).
@@ -33,7 +31,7 @@ Dùng để thêm một sản phẩm mới vào cơ sở dữ liệu.
 
 ```json
 {
-  "errors": \[
+  "errors": \\\[
     "Name must be at least 3 characters.",
     "Price must be greater than 0."
   ]
