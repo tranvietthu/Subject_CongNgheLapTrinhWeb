@@ -186,34 +186,39 @@ namespace DE1_QUANLYPHONGTRO.Controllers
         // POST: Room/AddImage
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddImage(int roomId, string? imageUrl, Microsoft.AspNetCore.Http.IFormFile? imageFile)
+        public async Task<IActionResult> AddImage(int roomId, string imageUrl)
         {
-            string finalImageUrl = "";
-
-            if (imageFile != null && imageFile.Length > 0)
+            if (string.IsNullOrEmpty(imageUrl))
             {
-                var fileName = System.IO.Path.GetFileNameWithoutExtension(imageFile.FileName) + "_" + System.Guid.NewGuid().ToString() + System.IO.Path.GetExtension(imageFile.FileName);
-                var uploadPath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "images");
-                if (!System.IO.Directory.Exists(uploadPath))
-                {
-                    System.IO.Directory.CreateDirectory(uploadPath);
-                }
-                var filePath = System.IO.Path.Combine(uploadPath, fileName);
-                using (var stream = new System.IO.FileStream(filePath, System.IO.FileMode.Create))
-                {
-                    await imageFile.CopyToAsync(stream);
-                }
-                finalImageUrl = "/images/" + fileName;
-            }
-            else if (!string.IsNullOrEmpty(imageUrl))
-            {
-                finalImageUrl = imageUrl;
-            }
-
-            if (string.IsNullOrEmpty(finalImageUrl))
-            {
-                TempData["ErrorMessage"] = "Vui lòng nhập đường dẫn ảnh hoặc chọn file ảnh từ máy tính.";
+                TempData["ErrorMessage"] = "Vui lòng nhập đường dẫn ảnh.";
                 return RedirectToAction("Details", new { id = roomId });
+            }
+
+            string finalImageUrl = imageUrl;
+
+            // Xử lý nếu người dùng nhập đường dẫn file từ máy tính cục bộ (VD: D:\images\photo.jpg)
+            if (System.IO.File.Exists(imageUrl))
+            {
+                try
+                {
+                    var fileName = System.IO.Path.GetFileNameWithoutExtension(imageUrl) + "_" + System.Guid.NewGuid().ToString() + System.IO.Path.GetExtension(imageUrl);
+                    var uploadPath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "images");
+                    
+                    if (!System.IO.Directory.Exists(uploadPath))
+                    {
+                        System.IO.Directory.CreateDirectory(uploadPath);
+                    }
+                    
+                    var filePath = System.IO.Path.Combine(uploadPath, fileName);
+                    System.IO.File.Copy(imageUrl, filePath);
+                    
+                    finalImageUrl = "/images/" + fileName;
+                }
+                catch (System.Exception ex)
+                {
+                    TempData["ErrorMessage"] = "Không thể đọc file từ máy tính: " + ex.Message;
+                    return RedirectToAction("Details", new { id = roomId });
+                }
             }
 
             var hasImages = await _context.RoomImages_BCS240041.AnyAsync(i => i.RoomId == roomId);
