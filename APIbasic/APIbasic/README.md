@@ -1,14 +1,18 @@
 # link video:
 
-https://cmcuni-my.sharepoint.com/:v:/g/personal/bcs240041\_st\_cmcu\_edu\_vn/IQCaZ-kGky3yQ4WUJzhGEQZpAVd8pMKfuOKCWADaTg\_Yz4U?e=DhE0UT\&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+## https://docs.google.com/videos/d/1rNh\_D\_YJaobVq8F5TUWEPvt98nTxR4fM5WLsBaaGp-A/edit?usp=sharing
+
+
 
 ## Hướng dẫn front-end (web, mobile) connect API
 
-### 1. Gọi API thêm sản phẩm (POST)
-- **URL**: `/api/products`
-- **Method**: `POST`
-- **Headers**: `Content-Type: application/json`
-- **Body**:
+### 1\. Gọi API thêm sản phẩm (POST)
+
+* **URL**: `/api/products`
+* **Method**: `POST`
+* **Headers**: `Content-Type: application/json`
+* **Body**:
+
 ```json
 {
   "name": "Sản phẩm A",
@@ -16,7 +20,8 @@ https://cmcuni-my.sharepoint.com/:v:/g/personal/bcs240041\_st\_cmcu\_edu\_vn/IQC
 }
 ```
 
-- **Ví dụ sử dụng fetch (JavaScript)**:
+* **Ví dụ sử dụng fetch (JavaScript)**:
+
 ```javascript
 fetch('https://localhost:7208/api/products', {
   method: 'POST',
@@ -28,11 +33,12 @@ fetch('https://localhost:7208/api/products', {
 .catch(err => console.error('Lỗi:', err));
 ```
 
-### 2. Gọi API lấy thông tin sản phẩm (GET)
-- **URL**: `/api/products/{id}` (với `{id}` là số nguyên dương, ví dụ `/api/products/1`)
-- **Method**: `GET`
+### 2\. Gọi API lấy thông tin sản phẩm (GET)
 
-- **Ví dụ sử dụng fetch (JavaScript)**:
+* **URL**: `/api/products/{id}` (với `{id}` là số nguyên dương, ví dụ `/api/products/1`)
+* **Method**: `GET`
+* **Ví dụ sử dụng fetch (JavaScript)**:
+
 ```javascript
 fetch('https://localhost:7208/api/products/1')
 .then(res => {
@@ -42,3 +48,4 @@ fetch('https://localhost:7208/api/products/1')
 .then(data => console.log('Thông tin sản phẩm:', data))
 .catch(err => console.error('Lỗi:', err));
 ```
+
