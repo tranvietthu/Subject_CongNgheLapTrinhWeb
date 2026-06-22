@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin sinh viên</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .card { border: 1px solid #ccc; padding: 20px; width: 300px; border-radius: 8px; box-shadow: 2px 2px 12px #aaa; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Thông tin sinh viên</h2>
+        <p><strong>Họ và tên:</strong> <span th:text="${studentData.name}">Tên</span></p>
+        <p><strong>Tuổi:</strong> <span th:text="${studentData.age}">Tuổi</span> tuổi</p>
+        <p><strong>Ngành học:</strong> <span th:text="${studentData.major}">Ngành</span></p>
+    </div>
+
+</body>
+</html>
