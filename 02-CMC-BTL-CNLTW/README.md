@@ -1,3 +1,6 @@
+link video: https://drive.google.com/drive/folders/17OC7DNYADUcIwaA0cCxSwyZZ2hzM1IZP?usp=drive_link
+
+
 # Tech Blue - Website bán điện thoại online
 
 Tech Blue là đồ án môn **Công nghệ Lập trình Web** xây dựng hệ thống bán điện thoại online với giao diện tông xanh công nghệ, có xác thực JWT, phân quyền USER/ADMIN, quản lý sản phẩm, giỏ hàng, đơn hàng và thống kê doanh thu.
