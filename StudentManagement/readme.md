@@ -1,4 +1,5 @@
-link video: https://cmcuni-my.sharepoint.com/:v:/g/personal/bcs240041\_st\_cmcu\_edu\_vn/IQCpv-zWOKH-RagTgt4ftUa1AWhGNM2HsnVUY\_y7QEQsJIY?e=VCHC6W
+link video: https://cmcuni-my.sharepoint.com/:v:/g/personal/bcs240041_st_cmcu_edu_vn/IQCpv-zWOKH-RagTgt4ftUa1AWhGNM2HsnVUY_y7QEQsJIY?e=PbD0fK&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
 
 
 
